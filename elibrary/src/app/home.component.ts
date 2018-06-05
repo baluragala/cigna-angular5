@@ -13,6 +13,18 @@ import { Component } from "@angular/core";
         <h1>elibrary</h1>
         <p>your library, now online...</p>
     </div>
+    `,
+  styles: [
     `
+      h1 {
+        color: red;
+      }
+
+      p {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+    `
+  ]
 })
 export class HomeComponent {}
