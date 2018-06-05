@@ -8,8 +8,8 @@
 */
 
 function readonly(target: Function) {
-  let newConstructor = function() {
-    target.apply(this, arguments);
+  let newConstructor = function(...args) {
+    target.apply(this, args);
     Object.freeze(this);
   };
 
@@ -17,7 +17,6 @@ function readonly(target: Function) {
   newConstructor.prototype.constructor = target;
   return <any>newConstructor;
 }
-
 @readonly
 class Course {
   constructor(public title: string, public mode: string) {}
