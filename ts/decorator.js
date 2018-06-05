@@ -13,9 +13,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 function readonly(target) {
-    console.log(target);
     var newConstructor = function () {
-        target.apply(this);
+        target.apply(this, arguments);
         Object.freeze(this);
     };
     newConstructor.prototype = Object.create(target.prototype);

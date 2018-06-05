@@ -8,9 +8,8 @@
 */
 
 function readonly(target: Function) {
-  console.log(target);
   let newConstructor = function() {
-    target.apply(this);
+    target.apply(this, arguments);
     Object.freeze(this);
   };
 
