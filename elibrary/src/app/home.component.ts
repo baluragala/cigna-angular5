@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation } from "@angular/core";
   selector: "el-home",
   template: `
     <div class="jumbotron">
-        <h1>{{title.toUpperCase()}}</h1>
+        <h1 [title]="title.toUpperCase()" [style.backgroundColor]="'red'">{{title.toUpperCase()}}</h1>
         <p>your library, now online...</p>
     </div>
     `,
