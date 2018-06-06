@@ -12,6 +12,7 @@ import { Component, ViewEncapsulation, Input } from "@angular/core";
     <div class="jumbotron">
         <h1 [title]="mainTitle.toUpperCase()" [style.backgroundColor]="'red'">{{mainTitle.toUpperCase()}}</h1>
         <p>your library, now online...</p>
+        <button (dblclick)="doublePing($event)">Ping</button>
     </div>
     `,
   styles: [
@@ -26,4 +27,13 @@ import { Component, ViewEncapsulation, Input } from "@angular/core";
 })
 export class HomeComponent {
   @Input() mainTitle: string = "";
+
+  ping() {
+    alert("Hurray, it works!!!");
+  }
+
+  doublePing(eventArgs: any) {
+    console.log(eventArgs);
+    alert("Hurray, it works- twice!!!");
+  }
 }
