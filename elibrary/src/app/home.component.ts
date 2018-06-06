@@ -16,7 +16,8 @@ import {
   selector: "el-home",
   template: `
     <div class="jumbotron">
-        <h1 [title]="mainTitle.toUpperCase()" [style.backgroundColor]="'red'">{{mainTitle.toUpperCase()}}</h1>
+        <h1 [title]="mainTitle.toUpperCase()" 
+        [style.backgroundColor]="'red'">{{mainTitle.toUpperCase()}}</h1>
         <p>your library, now online...</p>
         <button (click)="ping($event)">Ping</button>
         <button (click)="pong($event)">Pong</button>

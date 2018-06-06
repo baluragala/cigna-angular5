@@ -1,0 +1,39 @@
+<div class="container">
+  <form #courseForm="ngForm" (submit)="doSubmit(courseForm)">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" [(ngModel)]="course.title" name="ctitle" required minlength="5" maxlength="20" #courseTitle="ngModel"/>
+    {{courseTitle.errors | json }}
+    <table class="table-bordered">
+        <tr>
+          <td>valid</td>
+          <td>invalid</td>
+          <td>dirty</td>
+          <td>pristine</td>
+          <td>touched</td>
+          <td>untouched</td>
+        </tr>
+        <tr>
+          <td>{{courseTitle?.valid}}</td>
+          <td>{{courseTitle?.invalid}}</td>
+          <td>{{courseTitle?.dirty}}</td>
+          <td>{{courseTitle?.pristine}}</td>
+          <td>{{courseTitle?.touched}}</td>
+          <td>{{courseTitle?.untouched}}</td>
+        </tr>
+        <p class="error" *ngIf="courseTitle.dirty && courseTitle?.errors?.required">
+            courseTitle is required
+          </p>
+          <p class="error"
+             *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.minlength">
+             courseTitle must be minimum 5 characters
+          </p>
+          <p class="error"
+             *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.maxlength">
+             courseTitle must be maximum of 20 characters
+          </p>
+          <button type="submit" class="btn btn-success" [disabled]="!courseForm.valid">Submit</button>
+      </table>
+    </div>
+  </form>
+</div>
