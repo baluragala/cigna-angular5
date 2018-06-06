@@ -1,2 +1,3 @@
 <el-nav></el-nav>
-<el-home [mainTitle]="titles[index]"></el-home>
+{{messageFromHome}}
+<el-home [mainTitle]="titles[index]" (buttonClicked)="handleButtonClick($event)"></el-home>

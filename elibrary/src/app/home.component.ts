@@ -1,4 +1,10 @@
-import { Component, ViewEncapsulation, Input } from "@angular/core";
+import {
+  Component,
+  ViewEncapsulation,
+  Input,
+  Output,
+  EventEmitter
+} from "@angular/core";
 
 /*
 1. class
@@ -12,7 +18,8 @@ import { Component, ViewEncapsulation, Input } from "@angular/core";
     <div class="jumbotron">
         <h1 [title]="mainTitle.toUpperCase()" [style.backgroundColor]="'red'">{{mainTitle.toUpperCase()}}</h1>
         <p>your library, now online...</p>
-        <button (dblclick)="doublePing($event)">Ping</button>
+        <button (click)="ping($event)">Ping</button>
+        <button (click)="pong($event)">Pong</button>
     </div>
     `,
   styles: [
@@ -28,8 +35,13 @@ import { Component, ViewEncapsulation, Input } from "@angular/core";
 export class HomeComponent {
   @Input() mainTitle: string = "";
 
+  @Output() buttonClicked: EventEmitter<string> = new EventEmitter();
+
   ping() {
-    alert("Hurray, it works!!!");
+    this.buttonClicked.emit("PING");
+  }
+  pong() {
+    this.buttonClicked.emit("PONG");
   }
 
   doublePing(eventArgs: any) {
