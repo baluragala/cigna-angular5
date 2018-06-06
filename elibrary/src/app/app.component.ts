@@ -8,4 +8,9 @@ import { Component, ViewEncapsulation } from "@angular/core";
 })
 export class AppComponent {
   title = "angular";
+  titles = ["online library", "new library", "tech library"];
+  index = 0;
+  constructor() {
+    this.index = Math.floor(Math.random() * 2);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, ViewEncapsulation, Input } from "@angular/core";
 
 /*
 1. class
@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation } from "@angular/core";
   selector: "el-home",
   template: `
     <div class="jumbotron">
-        <h1 [title]="title.toUpperCase()" [style.backgroundColor]="'red'">{{title.toUpperCase()}}</h1>
+        <h1 [title]="mainTitle.toUpperCase()" [style.backgroundColor]="'red'">{{mainTitle.toUpperCase()}}</h1>
         <p>your library, now online...</p>
     </div>
     `,
@@ -25,5 +25,5 @@ import { Component, ViewEncapsulation } from "@angular/core";
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent {
-  title: string = "elibrary";
+  @Input() mainTitle: string = "";
 }
