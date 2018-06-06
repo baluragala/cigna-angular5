@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 
 /*
 1. class
@@ -10,21 +10,20 @@ import { Component } from "@angular/core";
   selector: "el-home",
   template: `
     <div class="jumbotron">
-        <h1>elibrary</h1>
+        <h1>{{title.toUpperCase()}}</h1>
         <p>your library, now online...</p>
     </div>
     `,
   styles: [
     `
-      h1 {
-        color: red;
-      }
-
       p {
         font-size: 1.5em;
         font-weight: bold;
       }
     `
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
-export class HomeComponent {}
+export class HomeComponent {
+  title: string = "elibrary";
+}
