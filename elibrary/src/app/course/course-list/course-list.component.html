@@ -3,7 +3,9 @@
   <div class="row">
     <ul>
       <li *ngFor="let c of courses">
-        <span [ngClass]="{'big-course':c.title.length >=5, 'small-course':c.title.length<5, 'course':true}">{{c.title | titlecase}}</span>
+        <a [routerLink]="['/courses',c.id,'detail']">
+          <span [ngClass]="{'big-course':c.title.length >=5, 'small-course':c.title.length<5, 'course':true}">{{c.title | titlecase}}</span>
+        </a>
       </li>
     </ul>
 

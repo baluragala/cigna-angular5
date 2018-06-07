@@ -33,6 +33,10 @@ export class CourseService {
     this.courses.push(course);
   }
 
+  getCourse(id: number): Course {
+    return this.courses.find(c => c.id == id);
+  }
+
   updateCourse() {}
 
   deleteCourse() {}

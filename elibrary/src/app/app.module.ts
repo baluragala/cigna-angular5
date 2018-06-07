@@ -7,10 +7,27 @@ import { SharedModule } from "./shared/shared.module";
 import { CourseModule } from "./course/course.module";
 import { CourseService } from "./course/course.service";
 import { NgcourseService } from "./course/ngcourse.service";
+import { RouterModule } from "@angular/router";
+import { CourseListComponent } from "./course/course-list/course-list.component";
+import { AddCourseReactiveComponent } from "./course/add-course-reactive/add-course-reactive.component";
+import { NotFoundComponent } from "./shared/not-found/not-found.component";
+import { CourseDetailComponent } from "./course/course-detail/course-detail.component";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
-  imports: [BrowserModule, SharedModule, CourseModule],
+  imports: [
+    BrowserModule,
+    SharedModule,
+    CourseModule,
+    RouterModule.forRoot([
+      { path: "", redirectTo: "home", pathMatch: "full" },
+      { path: "home", component: HomeComponent },
+      { path: "courses/list", component: CourseListComponent },
+      { path: "courses/add", component: AddCourseReactiveComponent },
+      { path: "courses/:courseId/detail", component: CourseDetailComponent },
+      { path: "**", component: NotFoundComponent }
+    ])
+  ],
   providers: [
     // { provide: CourseService, useClass: CourseService },
     { provide: "ENV", useValue: "PROD" },
