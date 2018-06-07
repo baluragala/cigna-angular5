@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
+import { CourseService } from "../course.service";
+import { Course } from "../course";
 
 @Component({
   selector: "el-course-list",
@@ -6,21 +8,18 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./course-list.component.css"]
 })
 export class CourseListComponent implements OnInit {
-  style = {};
-  today = new Date();
+  // style = {};
+  // today = new Date();
 
-  pi: number = 3.14;
-  e: number = 2.718281828459045;
-  constructor() {
-    setTimeout(() => {
-      this.style = {
-        backgroundColor: "red",
-        color: "white",
-        fontSize: "26px",
-        border: "1px solid green"
-      };
-    }, 3000);
+  // pi: number = 3.14;
+  // e: number = 2.718281828459045;
+  courses: Array<Course>;
+  constructor(
+    private service: CourseService,
+    @Inject("API_KEY") private apiKey: string
+  ) {}
+
+  ngOnInit() {
+    this.courses = this.service.getCourses();
   }
-
-  ngOnInit() {}
 }

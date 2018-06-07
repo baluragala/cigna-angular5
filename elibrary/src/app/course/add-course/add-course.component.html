@@ -2,9 +2,9 @@
   <form #courseForm="ngForm" (submit)="doSubmit(courseForm)">
     <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" [(ngModel)]="course.title" name="ctitle" required minlength="5" maxlength="20" #courseTitle="ngModel"/>
-    {{courseTitle.errors | json }}
-    <table class="table-bordered">
+      <input type="text" class="form-control" [(ngModel)]="course.title" name="ctitle" required minlength="5" maxlength="20" #courseTitle="ngModel"
+      /> {{courseTitle.errors | json }}
+      <table class="table-bordered">
         <tr>
           <td>valid</td>
           <td>invalid</td>
@@ -21,19 +21,29 @@
           <td>{{courseTitle?.touched}}</td>
           <td>{{courseTitle?.untouched}}</td>
         </tr>
-        <p class="error" *ngIf="courseTitle.dirty && courseTitle?.errors?.required">
-            courseTitle is required
-          </p>
-          <p class="error"
-             *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.minlength">
-             courseTitle must be minimum 5 characters
-          </p>
-          <p class="error"
-             *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.maxlength">
-             courseTitle must be maximum of 20 characters
-          </p>
-          <button type="submit" class="btn btn-success" [disabled]="!courseForm.valid">Submit</button>
       </table>
+      <p class="error" *ngIf="courseTitle.dirty && courseTitle?.errors?.required">
+        courseTitle is required
+      </p>
+      <p class="error" *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.minlength">
+        courseTitle must be minimum 5 characters
+      </p>
+      <p class="error" *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.maxlength">
+        courseTitle must be maximum of 20 characters
+      </p>
+
+      <div class="form-group">
+        <label for="title">Mode:</label>
+        <select class="form-control" name="mode" [(ngModel)]="course.mode">
+          <option *ngFor="let m of modes" [value]="m">{{m}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="title">Price:</label>
+        <input type="number" class="form-control" [(ngModel)]="course.price" name="price" required min="1" max="200" #coursePrice="ngModel"
+        />
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!courseForm.valid">Submit</button>
     </div>
   </form>
 </div>

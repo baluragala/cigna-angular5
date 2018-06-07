@@ -1,0 +1,79 @@
+<div class="container">
+  <form [formGroup]="courseForm" (submit)="doSubmit()">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" formControlName="title" />
+    </div>
+    {{courseForm.controls.title.errors | json }}
+    <table class="table-bordered">
+      <tr>
+        <td>valid</td>
+        <td>invalid</td>
+        <td>dirty</td>
+        <td>pristine</td>
+        <td>touched</td>
+        <td>untouched</td>
+      </tr>
+      <tr>
+        <td>{{courseForm.controls.title.valid}}</td>
+        <td>{{courseForm.controls.title.invalid}}</td>
+        <td>{{courseForm.controls.title.dirty}}</td>
+        <td>{{courseForm.controls.title.pristine}}</td>
+        <td>{{courseForm.controls.title.touched}}</td>
+        <td>{{courseForm.controls.title.untouched}}</td>
+      </tr>
+    </table>
+    <p class="error" *ngIf="courseForm.controls.title.dirty && courseForm.controls.title.errors?.required">
+      courseTitle is required
+    </p>
+    <p class="error" *ngIf="courseForm.controls.title.dirty && courseForm.controls.title.touched && courseForm.controls.title.errors?.minlength">
+      courseTitle must be minimum 5 characters
+    </p>
+    <p class="error" *ngIf="courseForm.controls.title.dirty && courseForm.controls.title.touched && courseForm.controls.title.errors?.maxlength">
+      courseTitle must be maximum of 20 characters
+    </p>
+    <div class="form-group">
+      <label for="title">Mode:</label>
+      <select class="form-control" formControlName="mode">
+        <option *ngFor="let m of modes" [value]="m">{{m}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="title">Price:</label>
+      <input type="number" class="form-control" formControlName="price" />
+    </div>
+    <button type="button" class="btn btn-error" (click)="load()">Load</button>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+
+
+<!-- {{courseTitle.errors | json }}
+      <table class="table-bordered">
+        <tr>
+          <td>valid</td>
+          <td>invalid</td>
+          <td>dirty</td>
+          <td>pristine</td>
+          <td>touched</td>
+          <td>untouched</td>
+        </tr>
+        <tr>
+          <td>{{courseTitle?.valid}}</td>
+          <td>{{courseTitle?.invalid}}</td>
+          <td>{{courseTitle?.dirty}}</td>
+          <td>{{courseTitle?.pristine}}</td>
+          <td>{{courseTitle?.touched}}</td>
+          <td>{{courseTitle?.untouched}}</td>
+        </tr>
+      </table>
+      <p class="error" *ngIf="courseTitle.dirty && courseTitle?.errors?.required">
+        courseTitle is required
+      </p>
+      <p class="error" *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.minlength">
+        courseTitle must be minimum 5 characters
+      </p>
+      <p class="error" *ngIf="courseTitle?.dirty && courseTitle?.touched && courseTitle?.errors?.maxlength">
+        courseTitle must be maximum of 20 characters
+      </p> -->
