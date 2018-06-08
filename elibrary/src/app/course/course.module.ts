@@ -8,13 +8,22 @@ import { AddCourseReactiveComponent } from "./add-course-reactive/add-course-rea
 import { CourseService } from "./course.service";
 import { CourseDetailComponent } from "./course-detail/course-detail.component";
 import { RouterModule } from "@angular/router";
+import { AuthGuard } from "../shared/auth.guard";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild([])
+    RouterModule.forChild([
+      { path: "courses/list", component: CourseListComponent },
+      {
+        path: "courses/add",
+        component: AddCourseReactiveComponent,
+        canActivate: [AuthGuard]
+      },
+      { path: "courses/:courseId/detail", component: CourseDetailComponent }
+    ])
   ],
   declarations: [
     CourseListComponent,

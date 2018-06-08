@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "el-root",
@@ -11,7 +12,8 @@ export class AppComponent {
   titles = ["online library", "new library", "tech library"];
   index = 0;
   messageFromHome: string = "";
-  constructor() {
+  constructor(private router: Router) {
+    console.log(router);
     this.index = Math.floor(Math.random() * 2);
   }
 

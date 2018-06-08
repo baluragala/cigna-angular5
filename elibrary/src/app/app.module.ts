@@ -17,16 +17,13 @@ import { CourseDetailComponent } from "./course/course-detail/course-detail.comp
   declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
-    SharedModule,
-    CourseModule,
     RouterModule.forRoot([
       { path: "", redirectTo: "home", pathMatch: "full" },
       { path: "home", component: HomeComponent },
-      { path: "courses/list", component: CourseListComponent },
-      { path: "courses/add", component: AddCourseReactiveComponent },
-      { path: "courses/:courseId/detail", component: CourseDetailComponent },
       { path: "**", component: NotFoundComponent }
-    ])
+    ]),
+    SharedModule,
+    CourseModule
   ],
   providers: [
     // { provide: CourseService, useClass: CourseService },
